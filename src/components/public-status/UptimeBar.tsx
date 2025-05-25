@@ -29,19 +29,19 @@ export function UptimeBar({ history }: { history: PublicServiceHistoryResponse[]
           const tooltipMessage = `${formatDuration(entry.downtime_seconds)}`;
 
           return (
-            <Tooltip key={entry.date}>
+            <Tooltip key={entry.date} delayDuration={0}>
               <TooltipTrigger asChild>
                 <div
                   className={`w-[5px] h-full ${getColor(entry.status)} cursor-pointer`}
                 />
               </TooltipTrigger>
-              <TooltipContent>
+              <TooltipContent className='bg-white text-black drop-shadow-md'>
                 <div className='p-4'>
-                  <p className="font-medium">{dateLabel}</p>
+                  <p className="font-medium text-base">{dateLabel}</p>
                   {entry.downtime_seconds === 0 ? "No downtime recorded on this day." : (
 
                     <div className='bg-gray-100 p-2 mt-4 w-[200px]'>
-                      <p className="text-sm text-gray-600 capitalize flex items-center justify-between">
+                      <p className="text-sm font-medium text-gray-600 capitalize flex items-center justify-between">
                         <span>{entry.status.replace("_", " ")} </span>
                         <span>{tooltipMessage}</span>
                       </p>
