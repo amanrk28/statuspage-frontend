@@ -27,6 +27,8 @@ export const useIncidents = ({
   useQuery<IncidentRead[]>({
     queryKey: [...INCIDENTS_QUERY_KEY, { resolved }],
     queryFn: () => fetchIncidents({ resolved }).then(res => res.data),
+    refetchOnMount: true,
+    staleTime: 0,
   });
 
 export const useIncident = (id: number) =>
