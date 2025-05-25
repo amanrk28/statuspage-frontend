@@ -3,6 +3,7 @@ import { usePublicStatus } from "@/queries/public-status";
 import { ServiceCard } from "@/components/public-status/ServiceCard";
 import { PublicServiceIncidentList } from "@/components/public-status/PublicStatusIncidentList";
 import { useWebSocket } from "@/hooks/useWebsocket";
+import { ServiceStatus } from "@/types/services";
 
 export const PublicStatusPage = () => {
   const { orgSlug } = useParams();
@@ -15,7 +16,7 @@ export const PublicStatusPage = () => {
   if (isLoading) return <div className="text-center p-10">Loading status...</div>;
   if (!data) return <div className="text-center p-10">Status not found.</div>;
 
-  const allOperational = data.public_services.every(s => s.current_status.toLowerCase() === "operational");
+  const allOperational = data.public_services.every(s => s.current_status.toLowerCase() === ServiceStatus.OPERATIONAL);
 
   return (
     <div className="max-w-5xl mx-auto p-6">

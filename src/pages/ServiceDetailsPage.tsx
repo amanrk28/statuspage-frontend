@@ -106,7 +106,7 @@ export const ServiceDetailsPage = () => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Button variant="outline" className="capitalize">
-              {data?.current_status} <ChevronDown />
+              {data?.current_status.replace('_', ' ')} <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
