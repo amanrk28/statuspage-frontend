@@ -1,15 +1,12 @@
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { ServiceForm } from "@/components/services/ServiceForm";
-import { useCreateService, useDeleteService, useServices, useUpdateService } from "@/queries/services";
+import { useCreateService, useServices, useUpdateService } from "@/queries/services";
 import { ServiceResponse } from "@/types/services";
 import { ServiceStatusBadge } from "@/components/shared/ServiceStatusBadge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useWebSocket } from "@/hooks/useWebsocket";
 import { useNavigate } from "react-router-dom";
-import { DeleteConfirm } from "@/components/shared/DeleteConfirm";
-import { toast } from "sonner";
 import { ActionCell } from "@/components/services/ActionCell";
 
 export const ServicesPage = () => {

@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import { AlertCircle, CheckCircle, Users, BarChart3, Shield, Zap, Menu, X } from 'lucide-react';
+import { CheckCircle, Users, BarChart3, Shield, Zap, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
-import { useCreateOrganization } from '@/queries/organizations';
 import { OrganizationModal } from '@/components/home/organization-modal';
 
 export const FeatureCard = ({ icon: Icon, title, description }) => (

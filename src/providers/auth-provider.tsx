@@ -16,7 +16,7 @@ export const Auth0ProviderWithHistory = ({ children }: React.PropsWithChildren) 
         redirect_uri: window.location.origin,
       }}
       cacheLocation='localstorage'
-      onRedirectCallback={(appState, user) => {
+      onRedirectCallback={() => {
         navigate("/services")
       }}
     >

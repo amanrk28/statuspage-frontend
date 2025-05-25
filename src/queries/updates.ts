@@ -1,5 +1,4 @@
 import { createIncidentUpdate, fetchIncidentUpdates } from "@/api/incident-updates";
-import { IncidentUpdateCreate } from "@/types/incident-updates";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useIncidentUpdates = (incidentId: number) => {
