@@ -23,7 +23,11 @@ export const ReportIncident = () => {
 
   return (
     <>
-      <Dialog open={open}>
+      <Dialog open={open} onOpenChange={(open) => {
+        if (!open) {
+          setOpen(false);
+        }
+      }}>
         <DialogTrigger asChild>
           <Button variant="default" onClick={() => setOpen(true)}>
             Report incident
