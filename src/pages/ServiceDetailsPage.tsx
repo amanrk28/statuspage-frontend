@@ -43,7 +43,7 @@ export const ServiceDetailsPage = () => {
       return;
     }
     updateServiceStatus({
-      status: status.toLowerCase() as ServiceStatus,
+      status: status.toLowerCase().replace(' ', '_') as ServiceStatus,
     });
   }
 
