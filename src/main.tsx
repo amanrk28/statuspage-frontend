@@ -1,16 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { App } from './App.tsx'
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Auth0ProviderWithHistory } from './providers/auth-provider.tsx';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/index.tsx';
+import { Toaster } from './components/ui/sonner.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Router>
-      <Auth0ProviderWithHistory>
-        <App />
-      </Auth0ProviderWithHistory>
-    </Router>
+    <RouterProvider router={router} />
+    <Toaster />
   </StrictMode>,
 )

@@ -1,16 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Auth0Provider, type AppState } from '@auth0/auth0-react';
+import { Auth0Provider } from '@auth0/auth0-react';
+
+const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
 export const Auth0ProviderWithHistory = ({ children }: React.PropsWithChildren) => {
-  const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-  const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-
   const navigate = useNavigate();
-
-  const onRedirectCallback = (appState?: AppState) => {
-    navigate(appState?.returnTo || window.location.pathname);
-  };
 
   return (
     <Auth0Provider
@@ -19,7 +15,10 @@ export const Auth0ProviderWithHistory = ({ children }: React.PropsWithChildren) 
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
-      onRedirectCallback={onRedirectCallback}
+      cacheLocation='localstorage'
+      onRedirectCallback={(appState, user) => {
+        navigate("/services")
+      }}
     >
       {children}
     </Auth0Provider>
