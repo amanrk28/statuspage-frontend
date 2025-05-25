@@ -19,7 +19,7 @@ export const IncidentDetailsPage = () => {
 
   const { data, isLoading } = useIncident(Number(incidentId));
   const { mutate: updateIncident } = useUpdateIncident();
-  const { mutate: deleteIncident } = useDeleteIncident();
+  const { mutate: deleteIncident, isPending: isDeleting } = useDeleteIncident();
 
   const handleBackClick = () => {
     navigate('/incidents');
@@ -56,6 +56,11 @@ export const IncidentDetailsPage = () => {
     });
   }
 
+  const handleDeleteIncident = () => {
+    deleteIncident(data.incident_id);
+    navigate('/incidents');
+  }
+
 
   return (
     <div className="h-full overflow-y-auto">
@@ -82,7 +87,7 @@ export const IncidentDetailsPage = () => {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <DeleteConfirm title={<p>Delete incident</p>} description={<p>Are you sure you want to delete this incident?</p>} onDelete={() => { deleteIncident(data.incident_id) }} />
+          <DeleteConfirm title={<p>Delete incident</p>} description={<p>Are you sure you want to delete this incident?</p>} onDelete={handleDeleteIncident} isLoading={isDeleting} />
         </div>
       </div>
       <div>
