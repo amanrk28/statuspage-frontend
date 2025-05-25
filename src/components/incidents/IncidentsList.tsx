@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { UpdateIncident } from "./update-incident";
 import { DeleteConfirm } from "../shared/DeleteConfirm";
 import { Button } from "../ui/button";
+import { useWebSocket } from "@/hooks/useWebsocket";
 
 export const IncidentsList = ({
   resolved = 'none'
@@ -13,9 +14,12 @@ export const IncidentsList = ({
   resolved?: 'true' | 'false' | 'none';
 }) => {
   const navigate = useNavigate();
-  const { data, isLoading } = useIncidents({ resolved });
+  const { data, isLoading, refetch } = useIncidents({ resolved });
   const { mutate: deleteIncident } = useDeleteIncident();
 
+    useWebSocket(() => {
+      refetch();
+    });
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-full">
